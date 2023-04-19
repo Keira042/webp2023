@@ -52,7 +52,7 @@
   .then(res =>{
     return res.json();
   }).then(result =>{
-   dataset = (reault);
+   dataset = (result);
    addNewData(dataset);
    updatePage(dataset);
   });
@@ -102,12 +102,11 @@
     currentPage = 1;
     dataset = [];
     var searchKeyword = document.getElementById("searchKeyword").value.toLowerCase(); 
-    var xhr = new XMLHttpRequest();
     fetch(openUrl, {method:'GET'})
     .then(res =>{
-    return res.json();
+      return res.json();
     }).then(result =>{
-    dataset = (reault);
+    dataset = (result);
     addNewData(dataset);
     updatePage(dataset);
     });

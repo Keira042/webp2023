@@ -103,19 +103,14 @@
     dataset = [];
     var searchKeyword = document.getElementById("searchKeyword").value.toLowerCase(); 
     var xhr = new XMLHttpRequest();
-    xhr.open('GET',openUrl,true);
-    xhr.send();
-    xhr.onreadystatechange = function(){
-      if(this.readyState == 4 && this.status == 200){
-        dataset = JSON.parse(this.responseText);
-        if(searchKeyword){ 
-          dataset = dataset.filter(function(data){
-              return data['title'].toLowerCase().indexOf(searchKeyword) > -1;});  
-        }
-        addNewData();
-        updatePage(); 
-      }
-    };
+    fetch(openUrl, {method:'GET'})
+    .then(res =>{
+    return res.json();
+    }).then(result =>{
+    dataset = (reault);
+    addNewData(dataset);
+    updatePage(dataset);
+    });
   }
   </script>  
 </html>
